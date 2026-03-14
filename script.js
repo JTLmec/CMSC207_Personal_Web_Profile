@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fun facts array
     const funFacts = [
-        "I can speak 3 programming languages fluently!",
-        "I've built over 10 web projects in the past year!",
-        "My favorite programming language is JavaScript!",
-        "I once stayed up for 48 hours debugging a single line of code!",
-        "I believe that clean code is like a good joke - it needs no explanation!",
-        "I started coding when I was just 15 years old!",
-        "My dream is to work for a tech company that changes the world!",
-        "I collect vintage computer keyboards as a hobby!",
-        "I can type at 120 words per minute!",
-        "I've contributed to open source projects on GitHub!"
+        "I have been playing the drums in church since I was 16 years old! up to now",
+        "I've been to Taiwan 3 times but Everytime I visit Taiwan I go to different provinces!",
+        "The best Ramen for me in the PH is Yushoken Ramen",
+        "I don't know hot to swim",
+        "I learned to crochet only during the pandemic",
+        "Im not yet fully transitioned in the tech space but slowly after DCS maybe I'll have my shot",
+        "My dream is to work for a tech company that changes the world! - well I think Im already employed at it now",
+        "I collect my broken drumsticks and plan to create a resin table out of it",
+        "I have 2 pomeranians named Rocket and Bisket and 2 cats name Garfield and Oreo",
+        "I stopped listening to loud music when I reached my 30s."
     ];
 
     // Get DOM elements
