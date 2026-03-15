@@ -232,17 +232,14 @@ section h2 {
     transform: translateY(-2px);
 }
 
+/* Enhanced Fun Fact Section */
 .fun-fact-section {
     text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.fun-fact-section h3 {
-    color: #667eea;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-/* Button Colors */
+/* Glittery Button */
 .fun-fact-btn {
     background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
     color: white;
@@ -253,11 +250,239 @@ section h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    position: relative;
+    overflow: hidden;
 }
- 
+
 .fun-fact-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+}
+
+/* Glitter Effect */
+.glitter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.glitter::before,
+.glitter::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: glitter 1.5s ease-in-out;
+}
+
+.glitter::before {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0.2s;
+}
+
+.glitter::after {
+    top: 70%;
+    right: 20%;
+    animation-delay: 0.4s;
+}
+
+@keyframes glitter {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
+}
+
+/* Multiple Glitter Particles */
+.fun-fact-btn.clicked .glitter::before {
+    animation: glitter-burst 0.8s ease-out;
+}
+
+.fun-fact-btn.clicked .glitter::after {
+    animation: glitter-burst 0.8s ease-out 0.1s;
+}
+
+@keyframes glitter-burst {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}
+
+/* Dedicated Fun Fact Box */
+.fun-fact-box {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(255, 105, 180, 0.1) 100%);
+    border: 2px solid #FF69B4;
+    border-radius: 15px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.fun-fact-box:hover {
+    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Fun Fact Box Header */
+.fun-fact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 105, 180, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.fun-fact-header h4 {
+    color: #FF1493;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Sparkle Animation */
+.sparkle {
+    font-size: 1.2rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Fun Fact Content */
+.fun-fact-content {
+    padding: 1rem 0;
+}
+
+.fun-fact-text {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.fun-fact-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fun Fact Box Footer */
+.fun-fact-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 105, 180, 0.3);
+    padding-top: 0.5rem;
+}
+
+/* Button Click Animation */
+.fun-fact-btn.clicked {
+    animation: button-burst 0.6s ease-out;
+}
+
+@keyframes button-burst {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Glitter Burst Effect */
+.fun-fact-btn.clicked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    animation: glitter-burst-expand 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes glitter-burst-expand {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+/* Additional Glitter Particles */
+.fun-fact-btn.clicked .glitter-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particle-float 1s ease-out forwards;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0);
+        opacity: 0;
+    }
 }
 
 /* Footer */
