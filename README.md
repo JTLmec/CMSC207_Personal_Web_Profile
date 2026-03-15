@@ -1,6 +1,6 @@
 # Jether's Personal Portfolio Webpage
 
-This repos contains amodern, interactive personal portfolio website showcasing professional background, hobbies, and contact information. Built for CMSC207 Web Programming and development.
+This repo contains amodern, interactive personal portfolio website showcasing professional background, hobbies, and contact information. Built for CMSC207 Web Programming and development.
 
 ## Features
 
