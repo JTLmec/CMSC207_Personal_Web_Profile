@@ -15,6 +15,118 @@ document.addEventListener('DOMContentLoaded', function() {
         "I spent 3 weeks in Japan going to different prefectures, I've been to Fukuoka, Hiroshima, Osaka, Kyoto, Tokyo, and Okinawa, I can't wait to go back!"
     ];
 
+    // Flip Card Functionality
+    const hobbyCards = document.querySelectorAll('.hobby-card');
+    
+    hobbyCards.forEach(card => {
+        const flipBtns = card.querySelectorAll('.flip-btn');
+        const cardInner = card.querySelector('.card-inner');
+        
+        flipBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                card.classList.toggle('flipped');
+            });
+        });
+    });
+
+    // Image Gallery Functionality
+    const galleries = document.querySelectorAll('.image-gallery');
+    
+    galleries.forEach(gallery => {
+        const images = gallery.querySelectorAll('.gallery-image');
+        const prevBtn = gallery.querySelector('.gallery-prev');
+        const nextBtn = gallery.querySelector('.gallery-next');
+        const counter = gallery.querySelector('.gallery-counter');
+        
+        let currentIndex = 0;
+        const totalImages = images.length;
+        
+        function showImage(index) {
+            // Hide all images
+            images.forEach(img => img.classList.remove('active'));
+            
+            // Show current image
+            if (images[index]) {
+                images[index].classList.add('active');
+            }
+            
+            // Update counter
+            if (counter) {
+                counter.textContent = `${index + 1} / ${totalImages}`;
+            }
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            showImage(currentIndex);
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            showImage(currentIndex);
+        }
+        
+        // Add event listeners
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextImage();
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevImage();
+            });
+        }
+        
+        // Auto-advance gallery every 3 seconds
+        let autoPlayInterval = setInterval(nextImage, 3000);
+        
+        // Pause auto-play on hover
+        gallery.addEventListener('mouseenter', function() {
+            clearInterval(autoPlayInterval);
+        });
+        
+        // Resume auto-play on mouse leave
+        gallery.addEventListener('mouseleave', function() {
+            autoPlayInterval = setInterval(nextImage, 3000);
+        });
+        
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        gallery.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        gallery.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next image
+                    nextImage();
+                } else {
+                    // Swipe right - previous image
+                    prevImage();
+                }
+            }
+        }
+        
+        // Initialize first image
+        showImage(0);
+    });
+
     // Get DOM elements
     const funFactBtn = document.getElementById('funFactBtn');
     const funFactText = document.getElementById('funFact');

@@ -154,34 +154,178 @@ section h2 {
 /* Hobbies Section */
 .hobbies-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
 }
 
-.hobby-item {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    border: 1px solid #e9ecef;
+/* Flip Card Styles */
+.hobby-card {
+    background: transparent;
+    width: 100%;
+    height: 450px;
+    perspective: 1000px;
 }
 
-.hobby-item:hover {
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.hobby-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card-front {
+    background: white;
+    border: 1px solid #e9ecef;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-back {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hobby-card:hover .card-front {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-.hobby-item h3 {
+.card-front h3, .card-back h3 {
     color: #667eea;
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
-.hobby-item p {
+.card-back h3 {
+    color: white;
+    text-align: center;
+}
+
+.card-front p {
     color: #666;
     line-height: 1.6;
     margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* Flip Button Styles */
+.flip-btn {
+    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    align-self: center;
+}
+
+.flip-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.back-btn {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid white;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Image Gallery Styles */
+.image-gallery {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-image.active {
+    opacity: 1;
+}
+
+.gallery-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0 1rem;
+}
+
+.gallery-prev, .gallery-next {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid white;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-prev:hover, .gallery-next:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.gallery-counter {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
 }
 
 /* Contact Section */
@@ -544,6 +688,14 @@ footer {
     .hobbies-list {
         grid-template-columns: 1fr;
     }
+    
+    .hobby-card {
+        height: 400px;
+    }
+    
+    .gallery-container {
+        height: 200px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -569,5 +721,22 @@ footer {
     
     section h2 {
         font-size: 2rem;
+    }
+    
+    .hobby-card {
+        height: 350px;
+    }
+    
+    .card-front, .card-back {
+        padding: 1.5rem;
+    }
+    
+    .gallery-container {
+        height: 180px;
+    }
+    
+    .flip-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
     }
 }
