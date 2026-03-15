@@ -1,6 +1,6 @@
 # Jether's Personal Portfolio Webpage
 
-This repo contains amodern, interactive personal portfolio website showcasing professional background, hobbies, and contact information. Built for CMSC207 Web Programming and development.
+This repo contains a modern, interactive personal portfolio website showcasing professional background, hobbies, and contact information. Built for CMSC207 Web Programming and development.
 
 ## Features
 
@@ -11,7 +11,7 @@ This repo contains amodern, interactive personal portfolio website showcasing pr
 
 ### **Advanced Components**
 - **3D Flip Cards**: Interactive hobby cards with image galleries
-- **Image Galleries**: Auto-advancing carousel with manual controls
+- **Image Galleries**: Auto-advancing carousel witßh manual controls
 - **Touch Support**: Swipe gestures for mobile gallery navigation
 - **Dynamic Content**: Random fun facts generator with animations
 
@@ -63,7 +63,7 @@ CMSC207_Personal_Web_Profile/
   - Pets (2 pomeranians, 2 cats)
 - **Contact**: Professional links and fun facts generator
 
-## 📱 Browser Compatibility
+## Browser Compatibility
 
 - Chrome/Chromium (Recommended)
 - Firefox
@@ -71,7 +71,7 @@ CMSC207_Personal_Web_Profile/
 - Edge
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 👤 Author
+## Author
 
 **Jether Mae Tolentino**
 - Diploma in Computer Science Student
